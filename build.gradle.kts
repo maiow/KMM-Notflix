@@ -8,6 +8,8 @@ plugins {
 
     alias(libs.plugins.googleServices.plugin) apply false
 
+    alias(libs.plugins.compose) apply false
+
     alias(libs.plugins.firebase.appDistribution.plugin) apply false
     alias(libs.plugins.firebase.crashlytics.plugin) apply false
     alias(libs.plugins.firebase.performance.plugin) apply false
@@ -15,7 +17,6 @@ plugins {
     alias(libs.plugins.ktLint)
     alias(libs.plugins.detekt)
     alias(libs.plugins.gradleVersionUpdates)
-    alias(libs.plugins.kotlinX.testResources)
 }
 
 allprojects {
@@ -24,7 +25,9 @@ allprojects {
         mavenCentral()
         maven(url = "https://jitpack.io")
     }
+}
 
+subprojects {
     apply(plugin = "org.jlleitschuh.gradle.ktlint")
     ktlint {
         debug.set(true)
@@ -38,16 +41,12 @@ allprojects {
             include("**/kotlin/**")
         }
     }
-}
 
-subprojects {
     apply(plugin = "io.gitlab.arturbosch.detekt")
     detekt {
         parallel = true
         config = files("${project.rootDir}/config/detekt/detekt.yml")
     }
-
-    apply(plugin = "com.goncalossilva.resources")
 
     tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
         checkForGradleUpdate = true
@@ -57,5 +56,5 @@ subprojects {
 }
 
 tasks.register("clean").configure {
-    delete("build")
+    delete("build") // dependencyUpdates task, for example, writes here
 }

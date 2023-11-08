@@ -6,40 +6,28 @@ Forked to study KMM - KMP...
 <img  src="https://img.shields.io/badge/-KOTLIN-E50914?logo=kotlin&logoColor=white&style=for-the-badge">
 <img  src="https://img.shields.io/badge/-ANDROID-E50914?logo=android&logoColor=white&style=for-the-badge">
 <img  src="https://img.shields.io/badge/-IOS-E50914?logo=ios&logoColor=white&style=for-the-badge">
-<img  src="https://img.shields.io/badge/-WINDOWS-E50914?logo=windows&logoColor=white&style=for-the-badge">
-<img  src="https://img.shields.io/badge/-LINUX-E50914?logo=linux&logoColor=white&style=for-the-badge">
-<img  src="https://img.shields.io/badge/-MACOS-E50914?logo=apple&logoColor=white&style=for-the-badge">
+<img  src="https://img.shields.io/badge/-DESKTOP-E50914?logo=desktop&logoColor=white&style=for-the-badge">
 </p>
 
 # Notflix
 
-# 🛠️Migrating to KMP - [Develop Branch](https://youtu.be/dQw4w9WgXcQ)
+# 🛠️Under constant refactor/development - [Develop Branch](https://youtu.be/dQw4w9WgXcQ)
 
-An android and desktop app built using [Kotlin Multiplatforom](https://kotlinlang.org/docs/multiplatform.html) that consumes [TMDB API]("https://developers.themoviedb.org/3") to display current trending, upcoming and popular movies🍿 and tvshows🎬.
+An android and iOS app built using [Kotlin Multiplatforom](https://kotlinlang.org/docs/multiplatform.html) that consumes [TMDB API]("https://developers.themoviedb.org/3") to display current trending, upcoming and popular movies🍿 and tvshows🎬.
 
 [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) is a framework of Kotlin that allows for sharing of a single codebase for business logic across different [targets](https://kotlinlang.org/docs/multiplatform-dsl-reference.html#targets)/platforms. Some of the targets supported by kotlin are: Android, iOS, Kotlin/JVM, Kotlin/JS, Android NDK, Windows, Linux, macOS etc.
 
-[Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) is a UI framework maybe by Jetbrains that allow for simple and accelerated desktop application and web development using [compose](https://developer.android.com/jetpack/compose). Compose multiplatform also allows sharing compose UI code between diffrent platforms. eg android, desktop(Windows, Linux, MacOS) and web.
+[Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/) is a UI framework maybe by Jetbrains that allow for simple and accelerated desktop application and web development using [compose](https://developer.android.com/jetpack/compose). Compose multiplatform also allows sharing compose UI code between diffrent platforms. eg android, iOS desktop(Windows, Linux, MacOS) and web.
 
 ## Table Of Content
 
+- [Screenshots](##screenshots)
 - [Prerequisite](##prerequisite)
-- [Pros of KMP/KMM](##pros-of-kmpkmm)
-- [App Structure](##app-structure)
-  - [1. androidApp](###1-androidapp)
-  - [2. desktopApp](###2-desktopapp)
-  - [3. iosApp](###3-iosApp)
-  - [4. shared](###4-shared)
-    - [__Domain__](###domain)
-    - [__Data__](###data)
-    - [__Presentation__](###presentation)
+- [Running](##running)
 - [Libraries](##libraries)
   - [Shared](###shared)
   - [Android](###android)
 - [Extras](##extras)
-- [Demo](##demo)
-- [Android App](##android-app)
-- [Desktop](##desktop)
 - [Related Resources](##related-resources)
   - [Videos 📽️](###videos-️)
   - [Articles/Blogs 📖](###articlesblogs-)
@@ -49,129 +37,52 @@ An android and desktop app built using [Kotlin Multiplatforom](https://kotlinlan
   - [Articles/Blogs 📖](###articlesblogs--1)
   - [Sample Projects 🤖](###sample-projects--1)
 
+## Screenshots
+
+## Android
+
+<img src="screenshots/img1.png" width="250"/>  <img src="screenshots/img2.png" width="250"/> <img src="screenshots/img3.png" width="250"/> <img src="screenshots/img4.png" width="250"/>
+
+## iOS
+
+<img src="screenshots/img7.png" width="250"/> <img src="screenshots/img5.png" width="250"/>  <img src="screenshots/img6.png" width="250"/>
+
+## Desktop
+
+<img src="screenshots/img8.png" width="640"/> <img src="screenshots/img9.png" width="640"/>
+
 ## Prerequisite
 
 // ToDo
 
-## Pros of KMP/KMM
+## Running
 
-- Faster development since you only need to write most of the business logic and tests only once.
-- Improve code quality.
-- Highly maintainable and testable code due to separation of concern in the codebase.
+Set up the `local.properties` file in the project's root directory (if it doesn't already exist) by adding the following properties:
 
-## App Structure
+```properties
+api_key=<YOUR TMDB API KEY>
+```
 
-<p align="center"><img src="assets/project_structureee.png" alt="Project Structure"></p>
+Run with the following command:
 
-The project currently has 3 main modules:
-
-### 1. [androidApp](https://github.com/VictorKabata/Notflix/tree/main/androidApp)
-
-This module contains the android application's UI built using [Jetpack compose](https://developer.android.com/jetpack/compose).
-
-### 2. [desktopApp](https://github.com/VictorKabata/Notflix/tree/main/desktopApp)
-
-This module contains the desktop application's UI built using [Compose Multiplatform](https://www.jetbrains.com/lp/compose-mpp/).
-
-## 3. [iOSApp](https://github.com/VictorKabata/Notflix/tree/main/iOSNotflix)
-This module contains iOS code that holds the iosApp  UI built using [Swift UI](https://developer.apple.com/xcode/swiftui/)
-
-
-### 4 . [shared](https://github.com/VictorKabata/Notflix/tree/main/shared)
-This module contains shared code that holds the domain and data layers and some part of the presentation logic ie.shared viewmodels
-
-
-### __Domain__
-
-This is the core layer of the application. The ```domain``` layer is independent of any other layers this means that changes in other layers will have no effect on domain layer eg. screen UI (presentation layer) or changing database (data layer) will not result in any code change withing domain layer.
-
-Components of domain layer include:
-
-- __Models__: Defines the core structure of the data that will be used within the application.
-
-- __Repositories__: Interfaces used by the use cases. Implemented in the data layer.
-
-### __Data__
-
-The ```data``` layer is responsible for selecting the proper data source for the domain layer. It contains the implementations of the repositories declared in the domain layer.
-
-Components of data layer include:
-
-- __Models__
-
-  -__Dto Models__: Defines POJO of network responses.
-
-  -__Entity Models__: Defines the schema of the database.
-
-- __Mappers__: They perform data transformation between ```domain```, ```dto``` and ```entity``` models.
-
-- __Network__: This is responsible for performing network operations eg. defining API endpoints using [Ktor](https://ktor.io/).
-
-- __Cache__: This is responsible for performing caching operations using [Realm](https://github.com/realm/realm-kotlin).
-
-- __Data Sources__:  Responsible for deciding which data source (network or cache) will be used when fetching data and presenting the data to viewmodels.
-
-<p align="center"><img src="assets/clean_arch.png" alt="Clean Architecture Diagram"></p>
-
-### __Presentation__
-
-The `presentation` package contains shared viewmodels code.
+```bash
+./gradlew run
+```
 
 ## Libraries
 
 ### Shared
 
+- [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) - Compose Multiplatform is a declarative framework for sharing UIs across multiple platforms with Kotlin based on Jetpack compose.
 - [Koin](https://insert-koin.io/docs/setup/v3.1) - Kotin dependency injection library with multiplatform support.
 - [Ktor](https://ktor.io/docs/http-client-multiplatform.html) - Provides multiplatform libraries required to make network calls to the REST API.
-- [Realm](https://github.com/realm/realm-kotlin) - Caching of application data from network responses.
 - [Multiplatform Settings](https://github.com/russhwolf/multiplatform-settings) - This is a Kotlin library for Multiplatform apps, so that common code can persist key-value data.
 - [kotlinx.coroutines](https://github.com/Kotlin/kotlinx.coroutines) - Library support for Kotlin coroutines with multiplatform support.
 - [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization) - Provides sets of libraries for various serialization formats eg. JSON, protocol buffers, CBOR etc.
 - [kotlinx.datetime](https://github.com/Kotlin/kotlinx-datetime) - A multiplatform Kotlin library for working with date and time.
 - [Napier](https://github.com/AAkira/Napier) -  Logger library for Kotlin Multiplatform.
-- [Mockk](https://github.com/mockk/mockk) - Library for creating mocks for tests.
-
-### Android
-
-- [Jetpack Compose](https://developer.android.com/jetpack/compose?gclid=Cj0KCQiA95aRBhCsARIsAC2xvfwC4pw6JG3r8U_4zVVSzwfCSIMMM8MKPMGAOTRoMjpkfpimPVz1FwoaAqlUEALw_wcB&gclsrc=aw.ds) - Modern toolkit for building native UI.
-- [Coil](https://coil-kt.github.io/coil/) - An image loading library for Android backed by kotlin coroutines.
-- [Splash Screen API](https://developer.android.com/guide/topics/ui/splash-screen) - Splash screen API reduces boilerplate code required to create a splash screen.
-- [Accompanist Navigation Animation](https://google.github.io/accompanist/navigation-animation/) - Add animation support when navigating between screens using Compose navigation component.
-- [Accompanist Pager](https://google.github.io/accompanist/pager/) - A library which provides paging layouts for Jetpack Compose. If you've used Android's ViewPager before, it has similar properties.
-- [Accompanist Insets](https://google.github.io/accompanist/insets/)
-- [Accompanist System UI Controller](https://google.github.io/accompanist/systemuicontroller/) - A library that provides easy-to-use utilities for updating the System UI bar colors within Jetpack Compose.
-- [Accompanist Material Placeholder](https://google.github.io/accompanist/placeholder/) -
-- [Accompanist Pager Indicator](https://google.github.io/accompanist/api/pager-indicators/com.google.accompanist.pager/-horizontal-pager-indicator.html) - A horizontally laid out indicator for a HorizontalPager or VerticalPager, representing the currently active page and total pages drawn using shape.
-
-## iOS
-- [SwiftUI](https://developer.apple.com/xcode/swiftui/) - SwiftUI is Apple's brand new declarative UI Toolkit for building user interfaces for iOS, tvOS, macOS, and watchOS.
-- [Cached Async Image](https://github.com/lorenzofiamingo/swiftui-cached-async-image) - SwiftUI Image loading framework with caching capability.
-- [KMP Async](https://github.com/rickclephas/KMP-NativeCoroutines) - A library to use kotlin coroutines in Swift.
-- [Cocoa Pods](https://cocoapods.org/) - CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.
-- [UIimage Colors](https://github.com/jathu/UIImageColors) - Swift Library to extract colors from images.
-
-
-## Extras
-
-- [GitHub Actions](https://docs.github.com/en/actions) -The project uses GitHub actions for CI/CD operations such as running automated builds, tests and deploying applications.
-- [KtLint](https://github.com/pinterest/ktlint) - The project uses KtLint to check for syntax correctness.
-
-## Demo
-
-## Android App
-
-<img src="assets/img0.png" width="250"/> <img src="assets/img1.png" width="250"/> <img src="assets/img2.png" width="250"/> <img src="assets/img3.png" width="250"/> <img src="assets/img4.png" width="250"/> <img src="assets/img5.png" width="250"/>
-
-## iOS App
-
-<img src="assets/img9.0.png" width="250"/> <img src="assets/img9.1.png" width="250"/> <img src="assets/img10.png" width="250"/> <img src="assets/img11.png" width="250"/> <img src="assets/img12.png" width="250"/> <img src="assets/img13.png" width="250"/>
-
-## Desktop App
-
-<img src="assets/img6.png" width="900" height=500/>
-
-<img src="assets/img7.png" width="900" height=500/> 
-<img src="assets/img8.png" width="900" height=500/>
+- [BuildKonfig](https://github.com/yshrsmz/BuildKonfig) - Supports embedding values from gradle file.
+- [Image Loader](https://github.com/qdsfdhvh/compose-imageloader) - Compose Image library for Kotlin Multiplatform
 
 ## Related Resources
 

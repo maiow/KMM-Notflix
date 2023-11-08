@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_home">Casa</string>
+    <string name="title_search">Búsqueda</string>
+    <string name="title_favorites">Favoritos</string>
+    <string name="title_settings">Ajustes</string>
+    <string name="title_details">Detalles</string>
+
+    <string name="trending_movies">Trending Movies</string>
+    <string name="popular_movies">Películas Populares</string>
+    <string name="upcoming_movies">Próximas Películas</string>
+    <string name="view_all">Ver Todo</string>
+
+    <string name="share">Share</string>
+
+    <!--Preference Titles-->
+    <string name="title_personalisation">Personalización</string>
+    <string name="title_extras">Extras</string>
+
+    <!--Preference Headers-->
+    <string name="change_theme">Cambiar de tema</string>
+    <string name="change_language">Cambiar idioma</string>
+    <string name="change_image_quality">Cambiar la calidad de la imagen</string>
+    <string name="report_bug">Reportar un error</string>
+    <string name="report_bug_description">Informar error o solicitar función</string>
+    <string name="source_code">Código fuente</string>
+    <string name="source_code_description">Ver el código fuente de la aplicación</string>
+
+    <string name="light_theme">Tema ligero</string>
+    <string name="dark_theme">Tema oscuro</string>
+    <string name="system_default">Sistema predeterminado</string>
+
+    <string name="popularity">Popularidad</string>
+    <string name="overview">Descripción General</string>
+    <string name="cast">Elenco</string>
+    <string name="trailer">Trailer de la película</string>
+    <string name="similar_movies">Películas Similares</string>
+
+    <string name="def">Defecto</string>
+
+    <string name="cancel">Cancelar</string>
+    <string name="movie_poster">Movie poster</string>
+    <string name="unknown_movie">Unknown movie</string>
+    <string name="rating">Rating</string>
+    <string name="unknown_actor">Unknown Actor</string>
+    <string name="unknown_character">Unknown character</string>
+    <string name="back">Back</string>
+</resources>
